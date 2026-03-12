@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home || Github Issue Tracker</title>
+    <!-- daisy and tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-[#F8FAFC]">
+    <header>
+      <nav class="flex justify-between px-20 py-4 items-center bg-white">
+        <h2 class="font-semibold text-[#1F2937] text-[24px]">
+          <i class="fa-brands fa-github"></i>Github Issues Tracker
+        </h2>
+        <div class="flex items-center gap-4">
+          <label class="input">
+            <svg
+              class="h-[1em] opacity-50"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <g
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="2.5"
+                fill="none"
+                stroke="currentColor"
+              >
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.3-4.3"></path>
+              </g>
+            </svg>
+            <input
+              type="search"
+              id="searchBox"
+              required
+              placeholder="Search Issues..."
+            />
+          </label>
+          <button class="btn btn-primary">
+            <i class="fa-solid fa-plus"></i> New Issue
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main class="bg-[#F8FAFC] font-geist min-h-screen">
+      <!-- Buttons section -->
+      <section id="nav-buttons" class="w-[80%] mx-auto pt-16 pb-4">
+        <div class="flex gap-4 bg-white p-6 justify-start rounded-lg shadow-md">
+          <button
+            id="allButton"
+            onclick="buttonColor('allButton')"
+            class="btn btn-primary w-30"
+          >
+            All
+          </button>
+          <button
+            id="openedButton"
+            onclick="buttonColor('openedButton')"
+            class="btn w-30"
+          >
+            Open
+          </button>
+          <button
+            id="ClosedButton"
+            onclick="buttonColor('ClosedButton')"
+            class="btn w-30"
+          >
+            Closed
+          </button>
+        </div>
+      </section>
+      <!-- Issues -->
+      <section id="issues" class="w-[80%] mx-auto shadow-lg rounded-lg mb-10">
+        <!-- data -->
+        <div class="bg-white p-6 flex justify-between rounded-lg">
+          <div class="flex items-center gap-2">
+            <div class="bg-[#4A00FF]/15 rounded-full p-2">
+              <img src="./assets/Aperture.png" alt="Aperture" />
+            </div>
+            <div>
+              <h2 class="text-[20px] font-semibold text-[#1F2937]">
+                <span id="issuesCount">0</span> issues
+              </h2>
+              <p class="text-[#64748B]">Track and manage your project issues</p>
+            </div>
+          </div>
+          <div class="flex gap-6 text-sm">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+              <span>Open</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 bg-purple-500 rounded-full"></span>
+              <span>Closed</span>
+            </div>
+          </div>
+        </div>
+        <!-- cards -->
+        <div
+          class="bg-[#FBFBFB] grid grid-cols-4 rounded-lg p-6 gap-6"
+          id="cardContainer"
+        >
+          <!-- card here -->
+          <!--           <div
+            class="p-4 bg-white rounded-md shadow-sm border-t-4 space-y-3 border-[#00A96E]"
+          >
+            <div id="topOfCard" class="flex justify-between">
+              <img
+                src="./assets/Open-Status.png"
+                alt="status image"
+                class="w-[10%] rounded-full"
+              />
+              <p
+                id="priority"
+                class="px-6 bg-[#EF4444]/10 rounded-full py-[6px] text-[#EF4444]"
+              >
+                High
+              </p>
+            </div>
+            <div id="middleOfCard" class="space-y-3">
+              <h2 class="font-semibold text-[20px]">
+                Fix navigation menu on mobile devices
+              </h2>
+              <p class="text-[#64748B] loading-2">
+                The navigation menu doesn't collapse properly on mobile
+                devices...
+              </p>
+              <div>
+                <span
+                  id="label"
+                  class="px-4 bg-[#EF4444]/10 rounded-full py-[6px] text-[#EF4444] border-[1px]"
+                  ><i class="fa-solid fa-bug"></i> Bug</span
+                >
+                <span
+                  class="px-4 bg-[#FDE68A]/20 rounded-full py-[6px] text-[#D97706] border-[1px]"
+                  ><i class="fa-solid fa-life-ring"></i> Help Wanted</span
+                >
+              </div>
+            </div>
+            <hr class="border-gray-400 mt-6" />
+            <div id="bottomOfCard" class="space-y-2">
+              <div>
+                <p id="author" class="text-[#64748B]">#1 by john_doe</p>
+                <p id="date" class="text-[#64748B]">1/15/2024</p>
+              </div>
+            </div>
+            <div>
+              <p id="assignee" class="text-[#64748B]">Assignee:</p>
+              <p id="update" class="text-[#64748B]">Updated: 1/15/2024</p>
+            </div>
+          </div> -->
+        </div>
+      </section>
+    </main>
+    <script src="./script/home.js"></script>
+  </body>
+</html>

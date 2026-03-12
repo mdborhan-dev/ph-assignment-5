@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login || Github Issue Tracker</title>
+    <!-- daisy and tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body class="bg-[#F8FAFC]">
+    <main
+      class="font-geist min-h-screen flex items-center justify-center flex-col"
+    >
+      <section class="w-[520px] max-sm:w-11/12 bg-[#ffffff] p-8 max-sm:my-4 rounded-lg space-y-5 shadow-lg">
+        <div class="flex flex-col items-center justify-center">
+          <img src="./assets/github-logo.png" alt="" class="w-[100px]" />
+          <h2 class="font-semibold text-[#1F2937] text-[24px] mt-[24px]">
+            Github Issues Tracker
+          </h2>
+          <p class="text-[16px] text-[#64748B]">
+            Sign in to manage your issues
+          </p>
+        </div>
+        <div class="w-full space-y-5">
+          <form action="" class="flex flex-col gap-2">
+            <label class="label">Username</label>
+            <input
+              class="input w-full"
+              type="text"
+              placeholder="Enter Username"
+              id="username"
+              required
+            />
+            <p class="text-[#4A00FF] text-[14px]">Default: admin</p>
+            <label for="password" class="label">Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              class="input w-full"
+              required
+            />
+            <p class="text-[#4A00FF] text-[14px]">Default: admin123</p>
+          </form>
+          <button class="btn btn-primary w-full" onclick="login()">Sign In</button>
+        </div>
+        <div class="flex items-center gap-4 my-4">
+            <hr class="flex-grow border-gray-300">
+            <span class="text-[#1F2937]">OR</span>
+            <hr class="flex-grow border-gray-300">
+        </div>
+        </div>
+        <div class="flex flex-col text-center">
+          <h3 class="text-[14px] text-[#64748B]">Demo Credentials:</h3>
+
+          <div class="p-[24px] bg-[#64748B]/10">
+            <p><span class="font-bold">Username:</span> admin</p>
+            <p><span class="font-bold">Password:</span> admin123</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="./script/login.js"></script>
+  </body>
+</html>
