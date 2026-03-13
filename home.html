@@ -33,7 +33,9 @@
     <header>
       <nav class="flex justify-between px-20 py-4 items-center bg-white">
         <h2 class="font-semibold text-[#1F2937] text-[24px]">
-          <i class="fa-brands fa-github"></i>Github Issues Tracker
+          <a href="./home.html"
+            ><i class="fa-brands fa-github"></i>Github Issues Tracker</a
+          >
         </h2>
         <div class="flex items-center gap-4">
           <label class="input">
@@ -185,37 +187,34 @@
         </button> -->
         <dialog id="cardModal" class="modal modal-bottom sm:modal-middle">
           <div class="modal-box w-[700px] space-y-3">
-            <h2 id="modalTitle" class="font-bold text-[24px] text-[#1F2937]">
-              Fix broken image uploads
-            </h2>
+            <h2
+              id="modalTitle"
+              class="font-bold text-[24px] text-[#1F2937]"
+            ></h2>
             <div>
-              <span id="modalBadge" class="">opened</span>
+              <span id="modalBadge" class=""></span>
               •
               <span class="text-[#64748B] text-[14px]"
-                >Opened by <span id="modalAuthor">Fahim Ahmed</span></span
-              >
+                >Opened by <span id="modalAuthor"></span
+              ></span>
               •
-              <span id="modalCreateDate" class="text-[#64748B] text-[14px]"
-                >22/02/2026</span
-              >
+              <span
+                id="modalCreateDate"
+                class="text-[#64748B] text-[14px]"
+              ></span>
             </div>
             <div id="modalLables"></div>
-            <p id="modalDescription" class="text-[#64748B]">
-              desc: The navigation menu doesn't collapse properly on mobile
-              devices. Need to fix the responsive behavior.
-            </p>
+            <p id="modalDescription" class="text-[#64748B]"></p>
             <div
               class="p-4 flex justify-between text-left gap-6 items-center bg-[#F8FAFC]"
             >
               <div>
                 <p class="text-[#64748B]">Assignee:</p>
-                <p id="modalAssignee" class="font-semibold text-[#1F2937]">
-                  Fahim ahmed
-                </p>
+                <p id="modalAssignee" class="font-semibold text-[#1F2937]"></p>
               </div>
               <div class="pr-23">
-                <p class="text-[#64748B]">Priority:</p>
-                <div id="modalPriority" class="">High</div>
+                <p class="text-[#64748B]"></p>
+                <div id="modalPriority" class=""></div>
               </div>
             </div>
             <div class="modal-action">
