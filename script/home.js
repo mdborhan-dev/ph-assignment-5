@@ -4,11 +4,27 @@ const allButton = document.getElementById("allButton");
 const openedButton = document.getElementById("openedButton");
 const ClosedButton = document.getElementById("ClosedButton");
 const searchBox = document.getElementById("searchBox");
+const loadingSpinner = document.getElementById("spinner");
+let issueArray = [];
 
-function loadAllIssues() {
-  fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
-    .then((res) => res.json())
-    .then((data) => displayAllIssues(data.data));
+function showLoading() {
+  loadingSpinner.classList.remove("hidden");
+  loadingSpinner.classList.add("grid");
+  cardContainer.innerHTML = "";
+}
+function hideLoading() {
+  loadingSpinner.classList.add("hidden");
+}
+
+async function loadAllIssues() {
+  // showLoading();
+  const res = await fetch(
+    "https://phi-lab-server.vercel.app/api/v1/lab/issues",
+  );
+  const data = await res.json();
+  issueArray = data.data;
+  displayAllIssues(data.data);
+  hideLoading();
 }
 
 function buttonColor(id) {
@@ -20,11 +36,30 @@ function buttonColor(id) {
   openedButton.classList.remove("btn-primary");
   ClosedButton.classList.remove("btn-primary");
 
-  let selected = document.getElementById(id);
+  const selected = document.getElementById(id);
   selected.classList.add("btn-primary");
 }
 
+ClosedButton.addEventListener("click", () => {
+  showLoading();
+  const closedIssues = issueArray.filter((issue) => issue.status === "closed");
+  displayAllIssues(closedIssues);
+  hideLoading();
+});
+openedButton.addEventListener("click", () => {
+  showLoading();
+  const OpenedIssues = issueArray.filter((issue) => issue.status === "open");
+  displayAllIssues(OpenedIssues);
+  hideLoading();
+});
+allButton.addEventListener("click", () => {
+  showLoading();
+  displayAllIssues(issueArray);
+  hideLoading();
+});
+
 function displayAllIssues(issues) {
+  cardContainer.innerHTML = "";
   issuesCount.innerText = issues.length;
   issues.forEach((issue) => {
     const labels = issue.labels
@@ -84,8 +119,9 @@ function displayAllIssues(issues) {
 }
 
 function serach() {
-  // fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications")
-  //    let filterIssues =
+  fetch(
+    "https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications",
+  );
 }
 
 loadAllIssues();
