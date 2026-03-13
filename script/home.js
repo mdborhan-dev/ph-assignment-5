@@ -90,15 +90,15 @@ function displayAllIssues(issues) {
       })
       .join(" ");
     const div = document.createElement("div");
-    div.className = `p-4 bg-white rounded-md shadow-sm border-t-4 space-y-3 border-[${issue.status == "open" ? "#00A96E" : "#A855F7"}]`;
+    div.className = `card p-4 bg-white rounded-md shadow-sm border-t-4 space-y-3 border-[${issue.status == "open" ? "#00A96E" : "#A855F7"}]`;
     div.innerHTML = `
-                  <div id="topOfCard" class="flex justify-between">
+                  <div onclick="openModal(${issue.id})" id="topOfCard" class="flex justify-between">
               <img
                 src="./assets/${issue.status == "open" ? "Open-Status.png" : "Closed-Status.png"}"
                 alt="status image"
                 class="w-[10%] rounded-full"
               />
-<div class="badge badge-soft ${issue.priority == "high" ? "badge-secondary" : issue.priority == "medium" ? "badge-warning" : issue.priority == "low" ? "badge-primary" : "NO priority set"}">${issue.priority}</div>
+<div onclick="openModal(${issue.id})" class="badge ${issue.priority == "high" ? "badge-secondary" : issue.priority == "medium" ? "badge-warning" : issue.priority == "low" ? "badge-primary" : "NO priority set"}">${issue.priority}</div>
             </div>
             <div id="middleOfCard" class="space-y-3">
               <h2 onclick="openModal(${issue.id})" class="font-semibold text-[20px]">
@@ -107,18 +107,18 @@ function displayAllIssues(issues) {
               <p onclick="openModal(${issue.id})" class="text-[#64748B] loading-2">
               ${issue.description}
               </p>
-              <div>
+              <div onclick="openModal(${issue.id})">
                 ${labels}
               </div>
             </div>
             <hr class="border-gray-400 mt-6" />
-            <div id="bottomOfCard" class="space-y-2 text-[14px">
-              <div class="flex justify-between">
+            <div onclick="openModal(${issue.id})" id="bottomOfCard" class="space-y-2 text-[14px">
+              <div onclick="openModal(${issue.id})" class="flex justify-between">
                 <p id="author" class="text-[#64748B]">#${issue.id} by ${issue.author}</p>
                 <p id="date" class="text-[#64748B]">${new Date(issue.createdAt).toLocaleDateString("en-US")}</p>
               </div>
             </div>
-            <div class="flex justify-between">
+            <div onclick="openModal(${issue.id})" class="flex justify-between">
               <p id="assignee" class="text-[#64748B]">Assignee: ${issue.assignee ? issue.assignee : "No assignee"}</p>
               <p id="update" class="text-[#64748B]">Updated: ${new Date(issue.updatedAt).toLocaleDateString("en-US")}</p>
             </div>
@@ -174,8 +174,12 @@ async function openModal(issueId) {
   modalBadge.className = `badge ${cardDetails.status == "open" ? "badge-success" : "badge-primary"} badge-md rounded-full`;
   modalLables.innerHTML = `${labels}`;
   modalPriority.innerHTML = cardDetails.priority;
-  modalPriority.className = `badge badge-soft ${cardDetails.priority == "high" ? "badge-secondary" : cardDetails.priority == "medium" ? "badge-warning" : cardDetails.priority == "low" ? "badge-primary" : "NO priority set"} rounded-full`;
+  modalPriority.className = `badge ${cardDetails.priority == "high" ? "badge-secondary" : cardDetails.priority == "medium" ? "badge-warning" : cardDetails.priority == "low" ? "badge-primary" : "NO priority set"} rounded-full`;
   cardModalOpen.showModal();
 }
 
 loadAllIssues();
+
+searchBox.addEventListener("click", () => {
+  searchBox.classList.remove(`max-sm:w-1`);
+});

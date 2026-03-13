@@ -31,10 +31,13 @@
   </head>
   <body class="bg-[#F8FAFC]">
     <header>
-      <nav class="flex justify-between px-20 py-4 items-center bg-white">
+      <nav
+        class="flex justify-between px-20 max-sm:px-5 gap-3 py-4 items-center bg-white"
+      >
         <h2 class="font-semibold text-[#1F2937] text-[24px]">
           <a href="./home.html"
-            ><i class="fa-brands fa-github"></i>Github Issues Tracker</a
+            ><i class="fa-brands fa-github"></i
+            ><span class="max-sm:hidden">Github Issues Tracker</span></a
           >
         </h2>
         <div class="flex items-center gap-4">
@@ -60,45 +63,49 @@
               id="searchBox"
               required
               placeholder="Search Issues..."
+              class="max-sm:w-1"
             />
           </label>
           <button class="btn btn-primary">
-            <i class="fa-solid fa-plus"></i> New Issue
+            <i class="fa-solid fa-plus"></i>
+            <span class="max-sm:hidden">New Issue </span>
           </button>
         </div>
       </nav>
     </header>
     <main class="bg-[#F8FAFC] font-geist min-h-screen">
       <!-- Buttons section -->
-      <section id="nav-buttons" class="w-[80%] mx-auto pt-16 pb-4">
-        <div class="flex gap-4 bg-white p-6 justify-start rounded-lg shadow-md">
+      <section id="nav-buttons" class="w-11/12 mx-auto pt-16 max-sm:pt-8 pb-4">
+        <div
+          class="flex gap-4 bg-white p-6 justify-start max-md:justify-between rounded-lg shadow-md"
+        >
           <button
             id="allButton"
             onclick="buttonColor('allButton')"
-            class="btn btn-primary w-30"
+            class="btn btn-primary w-20 md:w-30"
           >
             All
           </button>
           <button
             id="openedButton"
             onclick="buttonColor('openedButton')"
-            class="btn w-30"
+            class="btn w-20 md:w-30"
           >
             Open
           </button>
           <button
             id="ClosedButton"
             onclick="buttonColor('ClosedButton')"
-            class="btn w-30"
+            class="btn w-20 md:w-30"
           >
             Closed
           </button>
         </div>
       </section>
       <!-- Issues -->
-      <section id="issues" class="w-[80%] mx-auto shadow-lg rounded-lg mb-10">
+      <section id="issues" class="w-11/12 mx-auto shadow-lg rounded-lg mb-10">
         <!-- data -->
-        <div class="bg-white p-6 flex justify-between rounded-lg">
+        <div class="bg-white p-6 flex justify-between items-center rounded-lg">
           <div class="flex items-center gap-2">
             <div class="bg-[#4A00FF]/15 rounded-full p-2">
               <img src="./assets/Aperture.png" alt="Aperture" />
@@ -110,7 +117,7 @@
               <p class="text-[#64748B]">Track and manage your project issues</p>
             </div>
           </div>
-          <div class="flex gap-6 text-sm">
+          <div class="flex max-sm:flex-col max-sm:gap-2 gap-6 text-sm">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 bg-green-500 rounded-full"></span>
               <span>Open</span>
@@ -124,7 +131,7 @@
         </div>
         <!-- cards -->
         <div
-          class="bg-[#FBFBFB] grid grid-cols-4 rounded-lg p-6 gap-6"
+          class="bg-[#FBFBFB] grid grid-cols-1 lg:grid-cols-4 md:grid-cols-2 rounded-lg p-6 gap-6"
           id="cardContainer"
         >
           <span
@@ -186,7 +193,7 @@
           open modal
         </button> -->
         <dialog id="cardModal" class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box w-[700px] space-y-3">
+          <div class="modal-box md:w-[700px] space-y-3">
             <h2
               id="modalTitle"
               class="font-bold text-[24px] text-[#1F2937]"
