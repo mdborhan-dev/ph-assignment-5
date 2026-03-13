@@ -118,10 +118,16 @@ function displayAllIssues(issues) {
   });
 }
 
-function serach() {
-  fetch(
-    "https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=notifications",
-  );
-}
+searchBox.addEventListener("input", async (event) => {
+  const url = ` https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${event.target.value}`;
+  // console.log(url);
+  const res = await fetch(url);
+  const filteredData = await res.json();
+  if (event.target.value != "") {
+    displayAllIssues(filteredData.data);
+  } else {
+    loadAllIssues();
+  }
+});
 
 loadAllIssues();
