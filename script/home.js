@@ -5,6 +5,16 @@ const openedButton = document.getElementById("openedButton");
 const ClosedButton = document.getElementById("ClosedButton");
 const searchBox = document.getElementById("searchBox");
 const loadingSpinner = document.getElementById("spinner");
+const cardModalOpen = document.getElementById("cardModal");
+const modalAssignee = document.getElementById("modalAssignee");
+const modalPriority = document.getElementById("modalPriority");
+const modalDescription = document.getElementById("modalDescription");
+const modalLables = document.getElementById("modalLables");
+const modalCreateDate = document.getElementById("modalCreateDate");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalBadge = document.getElementById("modalBadge");
+const modalTitle = document.getElementById("modalTitle");
+
 let issueArray = [];
 
 function showLoading() {
@@ -91,10 +101,10 @@ function displayAllIssues(issues) {
 <div class="badge badge-soft ${issue.priority == "high" ? "badge-secondary" : issue.priority == "medium" ? "badge-warning" : issue.priority == "low" ? "badge-primary" : "NO priority set"}">${issue.priority}</div>
             </div>
             <div id="middleOfCard" class="space-y-3">
-              <h2 class="font-semibold text-[20px]">
+              <h2 onclick="openModal(${issue.id})" class="font-semibold text-[20px]">
                 ${issue.title}
               </h2>
-              <p class="text-[#64748B] loading-2">
+              <p onclick="openModal(${issue.id})" class="text-[#64748B] loading-2">
               ${issue.description}
               </p>
               <div>
@@ -129,5 +139,43 @@ searchBox.addEventListener("input", async (event) => {
     loadAllIssues();
   }
 });
+
+async function openModal(issueId) {
+  const res = await fetch(
+    `https://phi-lab-server.vercel.app/api/v1/lab/issue/${issueId}`,
+  );
+  const data = await res.json();
+  const cardDetails = data.data;
+  const labels = cardDetails.labels
+    .map((label) => {
+      let colorClass = "primary";
+      if (label.toLowerCase() === "bug")
+        colorClass = "badge badge-outline badge-error badge-lg";
+      if (label.toLowerCase() === "help wanted")
+        colorClass = "badge badge-outline badge-warning badge-lg";
+      if (label.toLowerCase() === "good first issue")
+        colorClass = "badge badge-outline badge-primary badge-lg";
+      if (label.toLowerCase() === "enhancement")
+        colorClass = "badge badge-outline badge-accent badge-lg";
+      if (label.toLowerCase() === "documentation")
+        colorClass = "badge badge-outline badge-info badge-lg";
+
+      return `<span class="px-4 rounded-full py-[6px] border-[1px] ${colorClass}">${label}</span>`;
+    })
+    .join(" ");
+  modalTitle.innerText = cardDetails.title;
+  modalDescription.innerText = cardDetails.description;
+  modalAuthor.innerText = cardDetails.author;
+  modalAssignee.innerText = `${cardDetails.assignee ? cardDetails.assignee : "No assignee"}`;
+  modalCreateDate.innerText = new Date(
+    cardDetails.createdAt,
+  ).toLocaleDateString("en-US");
+  modalBadge.innerText = cardDetails.status;
+  modalBadge.className = `badge ${cardDetails.status == "open" ? "badge-success" : "badge-primary"} badge-md rounded-full`;
+  modalLables.innerHTML = `${labels}`;
+  modalPriority.innerHTML = cardDetails.priority;
+  modalPriority.className = `badge badge-soft ${cardDetails.priority == "high" ? "badge-secondary" : cardDetails.priority == "medium" ? "badge-warning" : cardDetails.priority == "low" ? "badge-primary" : "NO priority set"} rounded-full`;
+  cardModalOpen.showModal();
+}
 
 loadAllIssues();

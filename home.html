@@ -179,6 +179,58 @@
             </div>
           </div> -->
         </div>
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="cardModal.showModal()">
+          open modal
+        </button> -->
+        <dialog id="cardModal" class="modal modal-bottom sm:modal-middle">
+          <div class="modal-box w-[700px] space-y-3">
+            <h2 id="modalTitle" class="font-bold text-[24px] text-[#1F2937]">
+              Fix broken image uploads
+            </h2>
+            <div>
+              <span id="modalBadge" class="">opened</span>
+              •
+              <span class="text-[#64748B] text-[14px]"
+                >Opened by <span id="modalAuthor">Fahim Ahmed</span></span
+              >
+              •
+              <span id="modalCreateDate" class="text-[#64748B] text-[14px]"
+                >22/02/2026</span
+              >
+            </div>
+            <div id="modalLables"></div>
+            <p id="modalDescription" class="text-[#64748B]">
+              desc: The navigation menu doesn't collapse properly on mobile
+              devices. Need to fix the responsive behavior.
+            </p>
+            <div
+              class="p-4 flex justify-between text-left gap-6 items-center bg-[#F8FAFC]"
+            >
+              <div>
+                <p class="text-[#64748B]">Assignee:</p>
+                <p id="modalAssignee" class="font-semibold text-[#1F2937]">
+                  Fahim ahmed
+                </p>
+              </div>
+              <div class="pr-23">
+                <p class="text-[#64748B]">Priority:</p>
+                <div
+                  id="modalPriority"
+                  class="badge badge-secondary rounded-full"
+                >
+                  High
+                </div>
+              </div>
+            </div>
+            <div class="modal-action">
+              <form method="dialog">
+                <!-- if there is a button in form, it will close the modal -->
+                <button class="btn">Close</button>
+              </form>
+            </div>
+          </div>
+        </dialog>
       </section>
     </main>
     <script src="./script/home.js"></script>
