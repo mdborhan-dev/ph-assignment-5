@@ -66,7 +66,7 @@
               class="max-sm:w-1"
             />
           </label>
-          <button class="btn btn-primary">
+          <button id="newIssue" class="btn btn-primary">
             <i class="fa-solid fa-plus"></i>
             <span class="max-sm:hidden">New Issue </span>
           </button>
@@ -74,6 +74,120 @@
       </nav>
     </header>
     <main class="bg-[#F8FAFC] font-geist min-h-screen">
+      <section id="newModalContainer">
+        <dialog id="newModal" class="modal">
+          <div class="modal-box">
+            <form method="dialog">
+              <button
+                class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+              >
+                ✕
+              </button>
+              <h3 class="text-xl font-bold">Add New Issue!</h3>
+              <!-- title -->
+              <div class="w-full">
+                <fieldset class="fieldset">
+                  <legend class="fieldset-legend text-lg">Issue title:</legend>
+                  <input
+                    type="text"
+                    id="newIssueTitle"
+                    class="input w-full"
+                    placeholder="Issue title here"
+                    required
+                  />
+                </fieldset>
+                <!-- description -->
+                <fieldset class="fieldset">
+                  <legend class="fieldset-legend text-lg">
+                    Issue description:
+                  </legend>
+                  <textarea
+                    id="newIssueDescription"
+                    class="textarea h-24 w-full"
+                    placeholder="Description"
+                  ></textarea>
+                </fieldset>
+                <!-- priority -->
+                <fieldset class="fieldset">
+                  <legend class="fieldset-legend text-lg">
+                    Choose Priority:
+                  </legend>
+                  <select id="newIssuePirority" required class="select w-full">
+                    <option disabled selected>Choose from here</option>
+                    <option>high</option>
+                    <option>medium</option>
+                    <option>low</option>
+                  </select>
+                </fieldset>
+                <!-- labels -->
+                <fieldset
+                  class="fieldset flex flex-wrap bg-base-100 border-base-300 rounded-box w-full gap-3 border p-4"
+                >
+                  <legend class="fieldset-legend text-lg">Labels</legend>
+                  <label class="label text-md">
+                    <input id="labelBug" type="checkbox" class="checkbox" />
+                    Bug
+                  </label>
+
+                  <label class="label text-md">
+                    <input
+                      id="labelHelpWanted"
+                      type="checkbox"
+                      class="checkbox"
+                    />
+                    Help wanted
+                  </label>
+                  <label class="label text-md">
+                    <input
+                      id="labelEnhancement"
+                      type="checkbox"
+                      class="checkbox"
+                    />
+                    Enhancement
+                  </label>
+                  <label class="label text-md">
+                    <input
+                      id="labelDocumentation"
+                      type="checkbox"
+                      class="checkbox"
+                    />
+                    Documentation
+                  </label>
+                  <label class="label text-md">
+                    <input
+                      id="labelFirstIssue"
+                      type="checkbox"
+                      class="checkbox"
+                    />
+                    Good first issue
+                  </label>
+                </fieldset>
+                <!-- author -->
+                <div class="w-full">
+                  <fieldset class="fieldset">
+                    <legend class="fieldset-legend text-lg">
+                      Issue author:
+                    </legend>
+                    <input
+                      type="text"
+                      id="newIssueAuthor"
+                      class="input w-full"
+                      placeholder="Issue author here"
+                      required
+                    />
+                  </fieldset>
+                  <button
+                    id="createIssueBtn"
+                    class="btn btn-primary mt-3 w-full"
+                  >
+                    Create Issue
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      </section>
       <!-- Buttons section -->
       <section id="nav-buttons" class="w-11/12 mx-auto pt-16 max-sm:pt-8 pb-4">
         <div
@@ -220,7 +334,7 @@
                 <p id="modalAssignee" class="font-semibold text-[#1F2937]"></p>
               </div>
               <div class="pr-23">
-                <p class="text-[#64748B]"></p>
+                <p id="Updated" class="text-[#64748B]"></p>
                 <div id="modalPriority" class=""></div>
               </div>
             </div>
