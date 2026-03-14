@@ -93,12 +93,14 @@ function displayAllIssues(issues) {
     div.className = `card p-4 bg-white rounded-md shadow-sm border-t-4 space-y-3 border-[${issue.status == "open" ? "#00A96E" : "#A855F7"}]`;
     div.innerHTML = `
                   <div onclick="openModal(${issue.id})" id="topOfCard" class="flex justify-between">
-              <img
+              <div class='flex'><img
                 src="./assets/${issue.status == "open" ? "Open-Status.png" : "Closed-Status.png"}"
                 alt="status image"
-                class="w-[10%] rounded-full"
+                class="w-[100%] rounded-full"
               />
-<div onclick="openModal(${issue.id})" class="badge ${issue.priority == "high" ? "badge-secondary" : issue.priority == "medium" ? "badge-warning" : issue.priority == "low" ? "badge-primary" : "NO priority set"}">${issue.priority}</div>
+              <h2 class='${issue.status == "open" ? "badge badge-soft badge-lg badge-success" : "badge badge-soft badge-lg badge-error"}'>${issue.status}</h2>
+              </div>
+<div onclick="openModal(${issue.id})" class="badge rounded-full ${issue.priority == "high" ? "badge-secondary" : issue.priority == "medium" ? "badge-warning" : issue.priority == "low" ? "badge-primary" : "NO priority set"}">${issue.priority}</div>
             </div>
             <div id="middleOfCard" class="space-y-3">
               <h2 onclick="openModal(${issue.id})" class="font-semibold text-[20px]">
@@ -183,3 +185,7 @@ loadAllIssues();
 searchBox.addEventListener("click", () => {
   searchBox.classList.remove(`max-sm:w-1`);
 });
+
+if (issues.length === 0) {
+  container.innerHTML = "No issues found";
+}
