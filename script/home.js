@@ -310,4 +310,5 @@ createIssueBtn.addEventListener("click", () => {
   cardContainer.appendChild(div);
   issuesCount.innerText = Number(issuesCount.innerText) + 1;
   localIssues.push(issue);
+  newModal.close();
 });

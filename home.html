@@ -83,108 +83,103 @@
               >
                 ✕
               </button>
-              <h3 class="text-xl font-bold">Add New Issue!</h3>
-              <!-- title -->
+            </form>
+            <h3 class="text-xl font-bold">Add New Issue!</h3>
+            <!-- title -->
+            <div class="w-full">
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend text-lg">Issue title:</legend>
+                <input
+                  type="text"
+                  id="newIssueTitle"
+                  class="input w-full"
+                  placeholder="Issue title here"
+                  required
+                />
+              </fieldset>
+              <!-- description -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend text-lg">
+                  Issue description:
+                </legend>
+                <textarea
+                  id="newIssueDescription"
+                  class="textarea h-24 w-full"
+                  placeholder="Description"
+                ></textarea>
+              </fieldset>
+              <!-- priority -->
+              <fieldset class="fieldset">
+                <legend class="fieldset-legend text-lg">
+                  Choose Priority:
+                </legend>
+                <select id="newIssuePirority" required class="select w-full">
+                  <option disabled selected>Choose from here</option>
+                  <option>high</option>
+                  <option>medium</option>
+                  <option>low</option>
+                </select>
+              </fieldset>
+              <!-- labels -->
+              <fieldset
+                class="fieldset flex flex-wrap bg-base-100 border-base-300 rounded-box w-full gap-3 border p-4"
+              >
+                <legend class="fieldset-legend text-lg">Labels</legend>
+                <label class="label text-md">
+                  <input id="labelBug" type="checkbox" class="checkbox" />
+                  Bug
+                </label>
+
+                <label class="label text-md">
+                  <input
+                    id="labelHelpWanted"
+                    type="checkbox"
+                    class="checkbox"
+                  />
+                  Help wanted
+                </label>
+                <label class="label text-md">
+                  <input
+                    id="labelEnhancement"
+                    type="checkbox"
+                    class="checkbox"
+                  />
+                  Enhancement
+                </label>
+                <label class="label text-md">
+                  <input
+                    id="labelDocumentation"
+                    type="checkbox"
+                    class="checkbox"
+                  />
+                  Documentation
+                </label>
+                <label class="label text-md">
+                  <input
+                    id="labelFirstIssue"
+                    type="checkbox"
+                    class="checkbox"
+                  />
+                  Good first issue
+                </label>
+              </fieldset>
+              <!-- author -->
               <div class="w-full">
                 <fieldset class="fieldset">
-                  <legend class="fieldset-legend text-lg">Issue title:</legend>
+                  <legend class="fieldset-legend text-lg">Issue author:</legend>
                   <input
                     type="text"
-                    id="newIssueTitle"
+                    id="newIssueAuthor"
                     class="input w-full"
-                    placeholder="Issue title here"
+                    placeholder="Issue author here"
                     required
                   />
                 </fieldset>
-                <!-- description -->
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend text-lg">
-                    Issue description:
-                  </legend>
-                  <textarea
-                    id="newIssueDescription"
-                    class="textarea h-24 w-full"
-                    placeholder="Description"
-                  ></textarea>
-                </fieldset>
-                <!-- priority -->
-                <fieldset class="fieldset">
-                  <legend class="fieldset-legend text-lg">
-                    Choose Priority:
-                  </legend>
-                  <select id="newIssuePirority" required class="select w-full">
-                    <option disabled selected>Choose from here</option>
-                    <option>high</option>
-                    <option>medium</option>
-                    <option>low</option>
-                  </select>
-                </fieldset>
-                <!-- labels -->
-                <fieldset
-                  class="fieldset flex flex-wrap bg-base-100 border-base-300 rounded-box w-full gap-3 border p-4"
-                >
-                  <legend class="fieldset-legend text-lg">Labels</legend>
-                  <label class="label text-md">
-                    <input id="labelBug" type="checkbox" class="checkbox" />
-                    Bug
-                  </label>
-
-                  <label class="label text-md">
-                    <input
-                      id="labelHelpWanted"
-                      type="checkbox"
-                      class="checkbox"
-                    />
-                    Help wanted
-                  </label>
-                  <label class="label text-md">
-                    <input
-                      id="labelEnhancement"
-                      type="checkbox"
-                      class="checkbox"
-                    />
-                    Enhancement
-                  </label>
-                  <label class="label text-md">
-                    <input
-                      id="labelDocumentation"
-                      type="checkbox"
-                      class="checkbox"
-                    />
-                    Documentation
-                  </label>
-                  <label class="label text-md">
-                    <input
-                      id="labelFirstIssue"
-                      type="checkbox"
-                      class="checkbox"
-                    />
-                    Good first issue
-                  </label>
-                </fieldset>
-                <!-- author -->
-                <div class="w-full">
-                  <fieldset class="fieldset">
-                    <legend class="fieldset-legend text-lg">
-                      Issue author:
-                    </legend>
-                    <input
-                      type="text"
-                      id="newIssueAuthor"
-                      class="input w-full"
-                      placeholder="Issue author here"
-                      required
-                    />
-                  </fieldset>
-                  <button
-                    id="createIssueBtn"
-                    class="btn btn-primary mt-3 w-full"
-                  >
-                    Create Issue
-                  </button>
-                </div>
+                <button id="createIssueBtn" class="btn btn-primary mt-3 w-full">
+                  Create Issue
+                </button>
               </div>
-            </form>
+            </div>
           </div>
         </dialog>
       </section>
